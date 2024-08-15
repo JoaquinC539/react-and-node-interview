@@ -15,7 +15,7 @@ class MainController {
     static index(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const articles = yield Articles_1.Article.find().exec();
-            res.send(articles);
+            res.status(200).send(articles);
         });
     }
 }

@@ -14,7 +14,9 @@ export class App{
     public static startApp(){
         this.express.use(bodyParser.urlencoded({extended:false}));
         this.express.use(bodyParser.json());
-        this.express.use(cors());
+        this.express.use(cors({
+            origin:"*"
+        }));
         this.express.use("/api",setRoutes())
 
         try {

@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Articles API
+  version: 1.0.0
+  description: A simple API to retrieve articles from the database.
+paths:
+  /api/articles:
+    get:
+      summary: Get all articles
+      operationId: getArticles
+      tags:
+        - Articles
+      responses:
+        '200':
+          description: A list of articles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Article'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        author:
+          type: string
+          example: "Reuters Videos"
+        title:
+          type: string
+          example: "EV-maker Fisker files for bankruptcy"
+        description:
+          type: string
+          example: "STORY: U.S. electric vehicle maker Fisker filed for bankruptcy protection late Monday. It’s looking to sell assets and restructure its debts."
+        url:
+          type: string
+          example: "https://finance.yahoo.com/video/ev-maker-fisker-files-bankruptcy-100256684.html"
+        urlToImage:
+          type: string
+          example: "https://media.zenfs.com/en/video.reutersnews.com/8320d17479db73de5e26ad7ade554030"
+        publishedAt:
+          type: string
+          format: date-time
+          example: "2024-06-18T10:02:56Z"
